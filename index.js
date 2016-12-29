@@ -4,6 +4,10 @@ var Base = require('base');
 var Vinyl = require('vinyl');
 var Stream = require('stream');
 var utils = require('./utils');
+var builtInFields = [
+  '_contents', '_symlink', 'contents', 'stat', 'history', 'path',
+  '_base', 'base', '_cwd', 'cwd',
+];
 
 /**
  * Expose `Item`
@@ -45,10 +49,10 @@ function Item(item) {
     }
   });
 
-  Vinyl.call(this, item);
-  var base = this.base;
+  var base = item.base;
   delete item.base;
 
+  Vinyl.call(this, item);
   Base.call(this, item);
   delete this.base;
   this.base = base;
@@ -71,8 +75,8 @@ function Item(item) {
  * Inherit `Base` and `Vinyl`
  */
 
-Base.extend(Item);
 Base.inherit(Item, Vinyl);
+Base.extend(Item);
 
 /**
  * Re-decorate Item methods after calling
@@ -86,6 +90,7 @@ Base.inherit(Item, Vinyl);
  */
 
 Item.prototype.clone = function(opts) {
+  var self = this;
   opts = opts || {};
 
   if (typeof opts === 'boolean') {
@@ -112,12 +117,11 @@ Item.prototype.clone = function(opts) {
     contents: contents
   });
 
-  var ignored = ['_contents', 'stat', 'history', 'path', 'base', 'cwd', 'options', 'data'];
-  for (var key in this) {
-    if (ignored.indexOf(key) < 0) {
-      utils.define(item, key, opts.deep ? utils.clone(this[key], true) : this[key]);
+  Object.keys(this).forEach(function(key) {
+    if (self.constructor.isCustomProp(key)) {
+      item[key] = opts.deep ? utils.clone(self[key], true) : self[key];
     }
-  }
+  });
 
   if (opts.deep !== true) {
     item.options = this.options;
@@ -127,6 +131,10 @@ Item.prototype.clone = function(opts) {
     item.data = utils.extend({}, this.data);
   }
   return item;
+};
+
+Item.isCustomProp = function(key) {
+  return builtInFields.indexOf(key) === -1;
 };
 
 /**
@@ -150,6 +158,29 @@ Item.prototype.inspect = function() {
     inspect.push(utils.inspectStream(this.contents));
   }
   return '<' + name + ' ' + inspect.join(' ') + '>';
+};
+
+Item.prototype.pipe = function(stream, options) {
+  var opts = utils.extend({}, options);
+  if (typeof opts.end === 'undefined') {
+    opts.end = true;
+  }
+
+  if (this.isStream()) {
+    return this.contents.pipe(stream, opts);
+  }
+
+  if (this.isBuffer()) {
+    if (opts.end) {
+      stream.end(this.contents);
+    } else {
+      stream.write(this.contents);
+    }
+    return stream;
+  }
+
+  if (opts.end) stream.end();
+  return stream;
 };
 
 /**
