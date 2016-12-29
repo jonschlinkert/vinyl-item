@@ -1,18 +1,18 @@
-# vinyl-item [![NPM version](https://img.shields.io/npm/v/vinyl-item.svg?style=flat)](https://www.npmjs.com/package/vinyl-item) [![NPM downloads](https://img.shields.io/npm/dm/vinyl-item.svg?style=flat)](https://npmjs.org/package/vinyl-item) [![Build Status](https://img.shields.io/travis/jonschlinkert/vinyl-item.svg?style=flat)](https://travis-ci.org/jonschlinkert/vinyl-item)
+# vinyl-item [![NPM version](https://img.shields.io/npm/v/vinyl-item.svg?style=flat)](https://www.npmjs.com/package/vinyl-item) [![NPM monthly downloads](https://img.shields.io/npm/dm/vinyl-item.svg?style=flat)](https://npmjs.org/package/vinyl-item)  [![NPM total downloads](https://img.shields.io/npm/dt/vinyl-item.svg?style=flat)](https://npmjs.org/package/vinyl-item) [![Linux Build Status](https://img.shields.io/travis/jonschlinkert/vinyl-item.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert/vinyl-item)
 
-Extends vinyl files with properties used in vinyl-collections.
+> Extends vinyl files with properties used in vinyl-collections.
 
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
 
 ```sh
-$ npm install vinyl-item --save
+$ npm install --save vinyl-item
 ```
 
 ## Usage
 
-Use the same way you would use a [vinyl](http://github.com/gulpjs/vinyl) file:
+Use the same way you would use a [vinyl](https://github.com/gulpjs/vinyl) file:
 
 ```js
 var Item = require('vinyl-item');
@@ -21,13 +21,9 @@ var item = new Item({path: 'foo'});
 
 ## API
 
-### [Item](index.js#L28)
+### [Item](index.js#L32)
 
-Create an instance of `Item`. Optionally pass a default object to use. See [vinyl](http://github.com/gulpjs/vinyl) docs for API details and additional documentation.
-
-**Params**
-
-* `item` **{Object}**
+Create an instance of `Item`. Optionally pass a default object to use. See [vinyl](https://github.com/gulpjs/vinyl) docs for API details and additional documentation.
 
 **Example**
 
@@ -38,7 +34,11 @@ var item = new Item({
 });
 ```
 
-### [.content](index.js#L184)
+**Params**
+
+* `item` **{Object}**
+
+### [.content](index.js#L215)
 
 Normalize the `content` and `contents` properties on `item`. This is done to ensure compatibility with the vinyl convention of using `contents` as a Buffer, as well as the assemble convention of using `content` as a string. We will eventually deprecate the `content` property.
 
@@ -50,7 +50,7 @@ console.log(item.content);
 //=> 'foo'
 ```
 
-### [.engine](index.js#L206)
+### [.engine](index.js#L237)
 
 Getter/setter to resolve the name of the `engine` to use for rendering.
 
@@ -62,30 +62,30 @@ console.log(item.engine);
 //=> '.hbs'
 ```
 
-## Related projects
+## About
 
-You might also be interested in these projects:
+### Related projects
 
-* [assemble](https://www.npmjs.com/package/assemble): Assemble is a powerful, extendable and easy to use static site generator for node.js. Used… [more](https://www.npmjs.com/package/assemble) | [homepage](https://github.com/assemble/assemble)
-* [templates](https://www.npmjs.com/package/templates): System for creating and managing template collections, and rendering templates with any node.js template engine.… [more](https://www.npmjs.com/package/templates) | [homepage](https://github.com/jonschlinkert/templates)
-* [verb](https://www.npmjs.com/package/verb): Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used… [more](https://www.npmjs.com/package/verb) | [homepage](https://github.com/verbose/verb)
-* [vinyl](https://www.npmjs.com/package/vinyl): A virtual file format | [homepage](http://github.com/gulpjs/vinyl)
+* [assemble](https://www.npmjs.com/package/assemble): Get the rocks out of your socks! Assemble makes you fast at creating web projects… [more](https://github.com/assemble/assemble) | [homepage](https://github.com/assemble/assemble "Get the rocks out of your socks! Assemble makes you fast at creating web projects. Assemble is used by thousands of projects for rapid prototyping, creating themes, scaffolds, boilerplates, e-books, UI components, API documentation, blogs, building websit")
+* [templates](https://www.npmjs.com/package/templates): System for creating and managing template collections, and rendering templates with any node.js template engine… [more](https://github.com/jonschlinkert/templates) | [homepage](https://github.com/jonschlinkert/templates "System for creating and managing template collections, and rendering templates with any node.js template engine. Can be used as the basis for creating a static site generator or blog framework.")
+* [verb](https://www.npmjs.com/package/verb): Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used… [more](https://github.com/verbose/verb) | [homepage](https://github.com/verbose/verb "Documentation generator for GitHub projects. Verb is extremely powerful, easy to use, and is used on hundreds of projects of all sizes to generate everything from API docs to readmes.")
+* [vinyl](https://www.npmjs.com/package/vinyl): Virtual file format. | [homepage](https://github.com/gulpjs/vinyl#readme "Virtual file format.")
 
-## Contributing
+### Contributing
 
-This document was generated by [verb](https://github.com/verbose/verb), please don't edit directly. Any changes to the readme must be made in [.verb.md](.verb.md). See [Building Docs](#building-docs).
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/jonschlinkert/vinyl-item/issues/new).
+### Building docs
 
-## Building docs
+_(This document was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme) (a [verb](https://github.com/verbose/verb) generator), please don't edit the readme directly. Any changes to the readme must be made in [.verb.md](.verb.md).)_
 
-Generate readme and API documentation with [verb](https://github.com/verbose/verb):
+To generate the readme and API documentation with [verb](https://github.com/verbose/verb):
 
 ```sh
-$ npm install -g verb verb-readme-generator && verb
+$ npm install -g verb verb-generate-readme && verb
 ```
 
-## Running tests
+### Running tests
 
 Install dev dependencies:
 
@@ -93,18 +93,18 @@ Install dev dependencies:
 $ npm install -d && npm test
 ```
 
-## Author
+### Author
 
 **Jon Schlinkert**
 
 * [github/jonschlinkert](https://github.com/jonschlinkert)
 * [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
 
-## License
+### License
 
 Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert).
 Released under the [MIT license](https://github.com/jonschlinkert/vinyl-item/blob/master/LICENSE).
 
 ***
 
-_This file was generated by [verb](https://github.com/verbose/verb), v0.9.0, on June 01, 2016._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.2.0, on December 28, 2016._
