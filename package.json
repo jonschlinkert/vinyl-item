@@ -1,7 +1,7 @@
 {
   "name": "vinyl-item",
   "description": "Extends vinyl files with properties used in vinyl-collections.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/vinyl-item",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/vinyl-item",
