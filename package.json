@@ -21,21 +21,21 @@
     "test": "mocha"
   },
   "dependencies": {
-    "base": "^0.8.1",
-    "base-option": "^0.8.2",
-    "base-plugins": "^0.4.12",
-    "clone": "^1.0.2",
+    "base": "^0.11.1",
+    "base-option": "^0.8.4",
+    "base-plugins": "^0.4.13",
+    "clone": "^2.1.0",
     "clone-stats": "^1.0.0",
     "define-property": "^0.2.5",
     "extend-shallow": "^2.0.1",
-    "isobject": "^2.1.0",
-    "lazy-cache": "^2.0.1",
-    "vinyl": "^1.1.1"
+    "isobject": "^3.0.0",
+    "lazy-cache": "^2.0.2",
+    "vinyl": "^2.0.1"
   },
   "devDependencies": {
-    "event-stream": "^3.3.2",
-    "gulp-format-md": "^0.1.9",
-    "mocha": "^2.5.3"
+    "event-stream": "^3.3.4",
+    "gulp-format-md": "^0.1.11",
+    "mocha": "^3.2.0"
   },
   "keywords": [
     "assemble",
@@ -44,6 +44,7 @@
     "context",
     "engine",
     "handlebars",
+    "item",
     "render",
     "template",
     "templates",
@@ -62,10 +63,10 @@
     ],
     "related": {
       "list": [
-        "templates",
-        "vinyl",
         "assemble",
-        "verb"
+        "templates",
+        "verb",
+        "vinyl"
       ]
     },
     "reflinks": [
